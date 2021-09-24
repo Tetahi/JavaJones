@@ -1,0 +1,56 @@
+package calculate;
+
+import java.util.Scanner;
+import java.util.Arrays;
+public class Main {
+
+    public static void main(String[] args) {
+
+        //Challenge 1
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("This program will calculate your GPA using individual test scores.");
+        System.out.print("How many scores would you like to input? ");
+        int score = keyboard.nextInt();
+        int[] gpa = new int[score];
+
+        System.out.println("Enter your " + gpa.length + " scores:");
+        double sum = 0;
+        for (int index = 0; index < gpa.length; index++)
+        {
+            gpa[index] = keyboard.nextInt();
+            sum = sum + gpa[index];
+        }
+        double average = sum / gpa.length;
+        System.out.println("Your GPA is: " + average);
+        //Challenge 2
+        System.out.println("Your scores from lowest to highest are: ");
+        Arrays.sort(gpa);
+        for(int i = 0; i <= gpa.length-1; i++){
+            System.out.println(gpa[i]);
+        }
+
+        //Challenge 3
+        int smallest = gpa[0];
+        int largest = gpa[0];
+
+        for(int i = 0; i < gpa.length; i++){
+            if(gpa[i] < smallest) smallest = gpa[i];
+            if(gpa[i] > largest) largest = gpa[i];
+        }
+
+        System.out.println("Your lowest score was: " + smallest);
+        System.out.println("Your highest score was: " + largest);
+
+        //Challenge 4: Include finding the mode and median grades
+
+        int middle = gpa.length/2;
+        double medianValue = 0;
+        if (gpa.length%2 == 1) {
+            medianValue = gpa[middle];
+        } else {
+            medianValue = (gpa[middle - 1] + gpa[middle]) / 2;
+        }
+        System.out.print("Your median score was: " + medianValue);
+
+    }
+}
